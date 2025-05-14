@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:xclone/pages/onboarding/onboarding_screen.dart';
 
 import 'package:xclone/pages/splash/splash_screen.dart';
+import 'package:xclone/theme/dark_mode.dart';
+import 'package:xclone/theme/light_mode.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,13 +12,13 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Rocket-X',
-      home: const SplashScreen(),
+      theme: lightMode,
+      home: const OnboardingScreen(),
     );
   }
 }

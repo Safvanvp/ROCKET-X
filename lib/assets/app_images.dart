@@ -3,5 +3,5 @@ class AppImages {
   static const String pngFormat = '.png';
 
   static String logo = '${basePath}Logo$pngFormat';
-  
+  static String logotypo = '${basePath}Roket$pngFormat';
 }

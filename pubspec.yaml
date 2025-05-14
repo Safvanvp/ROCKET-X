@@ -17,7 +17,7 @@ dependencies:
   cupertino_icons: 
   firebase_core: 
   firebase_auth: 
-  bloc: 
+
 
 dev_dependencies:
   flutter_test:
