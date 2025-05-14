@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "974568859270",
+    "project_id": "rocket-x-b714f",
+    "storage_bucket": "rocket-x-b714f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974568859270:android:9e9438516a5df8bb5a5307",
+        "android_client_info": {
+          "package_name": "com.example.xclone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsx37MngWwRDjOaL6mwri7QgVlkWYKpZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
