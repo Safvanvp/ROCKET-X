@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:xclone/pages/home_screen.dart';
+
+import 'package:xclone/pages/splash/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Rocket-X',
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
