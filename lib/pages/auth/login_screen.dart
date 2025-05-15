@@ -21,10 +21,19 @@ class LoginScreen extends StatelessWidget {
         passwordController.text,
       );
     } catch (e) {
-      builder:
-      (context) => AlertDialog(
-            title: Text(e.toString()),
-          );
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Login Failed'),
+          content: Text(e.toString()),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
     }
   }
 
