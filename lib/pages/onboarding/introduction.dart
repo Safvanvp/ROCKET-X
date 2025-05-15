@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:xclone/assets/app_animations.dart';
 import 'package:xclone/components/my_introduction.dart';
-import 'package:xclone/pages/auth_pages/login_screen.dart';
+
+import 'package:xclone/pages/onboarding/onboarding_screen.dart';
 
 class Introduction extends StatefulWidget {
   const Introduction({super.key});
@@ -53,7 +54,10 @@ class _IntroductionState extends State<Introduction> {
                   onFirstPage
                       ? GestureDetector(
                           onTap: () {
-                            _pagecontroller.jumpToPage(2);
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => OnboardingScreen()));
                           },
                           child: Container(
                               height: 30,
@@ -104,7 +108,7 @@ class _IntroductionState extends State<Introduction> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => LoginScreen()));
+                                    builder: (context) => OnboardingScreen()));
                           },
                           child: Container(
                               height: 30,

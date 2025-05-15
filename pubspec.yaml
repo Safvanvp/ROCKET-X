@@ -19,7 +19,22 @@ dependencies:
   firebase_auth: 
   lottie:
   smooth_page_indicator:
+  flutter_launcher_icons:
 
+  
+  
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/Logo.png"
+  remove_alpha_ios: true
+
+  # firebase_messaging:
+  #   ios:
+  #     bundle_id: com.example.xclone
+  #     app_group: group.com.example.xclone
+  #     xcode_configuration_file: Runner.xcworkspace/xcuserdata/Runner.xcuserdatad/UserInterfaceState.xcuserstate
+  #     xcode_project_file: Runner.xcodeproj/project.pbxproj
 
 dev_dependencies:
   flutter_test:

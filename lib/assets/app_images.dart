@@ -4,4 +4,6 @@ class AppImages {
 
   static String logo = '${basePath}Logo$pngFormat';
   static String logotypo = '${basePath}Roket$pngFormat';
+  static String google = '${basePath}google$pngFormat';
+  static String apple = '${basePath}apple$pngFormat';
 }

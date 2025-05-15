@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xclone/assets/app_images.dart';
+import 'package:xclone/pages/auth/login_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -35,6 +36,10 @@ class OnboardingScreen extends StatelessWidget {
               ),
               Spacer(),
               GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                },
                 child: Container(
                   alignment: Alignment.center,
                   width: MediaQuery.of(context).size.width,
