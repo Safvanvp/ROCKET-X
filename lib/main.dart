@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:xclone/pages/onboarding/onboarding_screen.dart';
+import 'package:xclone/pages/auth_pages/login_screen.dart';
+import 'package:xclone/pages/onboarding/introduction.dart';
 
-import 'package:xclone/pages/splash/splash_screen.dart';
-import 'package:xclone/theme/dark_mode.dart';
 import 'package:xclone/theme/light_mode.dart';
 
 void main() {
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Rocket-X',
       theme: lightMode,
-      home: const OnboardingScreen(),
+      home: const LoginScreen(),
     );
   }
 }

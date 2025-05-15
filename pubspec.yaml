@@ -17,6 +17,8 @@ dependencies:
   cupertino_icons: 
   firebase_core: 
   firebase_auth: 
+  lottie:
+  smooth_page_indicator:
 
 
 dev_dependencies:
@@ -37,6 +39,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/animations/
 
 
  
