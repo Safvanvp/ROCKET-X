@@ -5,7 +5,9 @@ import 'package:xclone/components/my_button.dart';
 import 'package:xclone/components/my_textfield.dart';
 
 class RegisterPage extends StatelessWidget {
-  RegisterPage({super.key});
+  RegisterPage({
+    super.key,
+  });
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
@@ -83,7 +85,10 @@ class RegisterPage extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            MyButton(text: 'Signup'),
+            MyButton(
+              text: 'Signup',
+              onTap: () {},
+            ),
             const SizedBox(
               height: 20,
             ),
@@ -98,12 +103,15 @@ class RegisterPage extends StatelessWidget {
                 const SizedBox(
                   width: 4,
                 ),
-                Text('login now',
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    )),
+                TextButton(
+                  onPressed: () {},
+                  child: Text('login now',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      )),
+                )
               ],
             ),
           ],

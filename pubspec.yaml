@@ -16,7 +16,8 @@ dependencies:
 
   cupertino_icons: 
   firebase_core: 
-  firebase_auth: 
+  firebase_auth:
+  cloud_firestore:  
   lottie:
   smooth_page_indicator:
   flutter_launcher_icons:

@@ -6,8 +6,15 @@ import 'package:xclone/components/my_button.dart';
 import 'package:xclone/components/my_loginproviders.dart';
 import 'package:xclone/components/my_textfield.dart';
 
+
 class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+
+  LoginScreen({
+    super.key,
+
+  });
+
+  
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -86,7 +93,10 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              MyButton(text: 'Login'),
+              MyButton(
+                text: 'Login',
+                onTap: () {},
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -101,12 +111,15 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(
                     width: 4,
                   ),
-                  Text('Register now',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      )),
+                  TextButton(
+                    onPressed: () => (),
+                    child: Text('Register now',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  )
                 ],
               ),
               const SizedBox(
