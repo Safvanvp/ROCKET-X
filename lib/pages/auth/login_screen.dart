@@ -5,16 +5,28 @@ import 'package:xclone/assets/app_images.dart';
 import 'package:xclone/components/my_button.dart';
 import 'package:xclone/components/my_loginproviders.dart';
 import 'package:xclone/components/my_textfield.dart';
-
+import 'package:xclone/services/auth/auth_services.dart';
 
 class LoginScreen extends StatelessWidget {
-
   LoginScreen({
     super.key,
-
   });
 
-  
+  Future<void> login(BuildContext context) async {
+    final authServices = AuthServices();
+
+    try {
+      await authServices.signInWithEmailAndPassword(
+        emailController.text,
+        passwordController.text,
+      );
+    } catch (e) {
+      builder:
+      (context) => AlertDialog(
+            title: Text(e.toString()),
+          );
+    }
+  }
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -95,7 +107,7 @@ class LoginScreen extends StatelessWidget {
               ),
               MyButton(
                 text: 'Login',
-                onTap: () {},
+                onTap: () => login(context),
               ),
               const SizedBox(
                 height: 20,

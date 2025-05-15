@@ -16,7 +16,7 @@ class MyLoginproviders extends StatelessWidget {
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: Color.fromARGB(90, 255, 255, 255),
-          border: Border.all(color: Colors.white),
+          border: Border.all(width: 2, color: Colors.white),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(
