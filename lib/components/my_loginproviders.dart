@@ -24,14 +24,14 @@ class MyLoginproviders extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-                margin: EdgeInsets.zero, child: Image.asset(image, height: 60)),
-            SizedBox(width: 8),
+                margin: EdgeInsets.zero, child: Image.asset(image, height: 40)),
+            SizedBox(width: 15),
             Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 10),
+                // SizedBox(height: 5),
                 Text("Sign in", style: TextStyle(fontWeight: FontWeight.bold)),
                 Text("With $providername", style: TextStyle(fontSize: 12)),
               ],

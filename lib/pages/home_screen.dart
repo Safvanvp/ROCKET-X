@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:xclone/services/auth/auth_services.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
+  final AuthServices _authServices = AuthServices();
 
-class _HomeScreenState extends State<HomeScreen> {
-
-  
+  void _logout(BuildContext context) async {
+    _authServices.signOut();
+    Navigator.pop(context);
+    
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          icon: const Icon(Icons.logout),
+          onPressed: () => _logout(context),
+        ),
         title: const Text('Home Screen'),
       ),
       body: Center(
         child: const Text('Welcome to the Home Screen!'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Action when the button is pressed
-        },
-        child: const Icon(Icons.add),
       ),
     );
   }
