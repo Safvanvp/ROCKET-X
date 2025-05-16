@@ -4,6 +4,7 @@ import 'package:xclone/assets/app_animations.dart';
 import 'package:xclone/components/my_button.dart';
 import 'package:xclone/components/my_textfield.dart';
 import 'package:xclone/pages/auth/login_screen.dart';
+import 'package:xclone/services/auth/auth_services.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({
@@ -16,6 +17,29 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController confirmPasswordController =
       TextEditingController();
   final _registerkey = GlobalKey<FormState>();
+
+  void register(BuildContext context)async{
+    final authServices = AuthServices();
+
+    try{
+      await authServices.signInWithEmailAndPassword(emailController.text, passwordController.text);
+
+    }catch(e){
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Login Failed'),
+          content: Text(e.toString()),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
