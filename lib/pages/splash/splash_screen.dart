@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xclone/assets/app_images.dart';
-import 'package:xclone/pages/onboarding/introduction.dart';
+
+import 'package:xclone/services/auth/auth_gate.dart';
 
 
 
@@ -31,6 +32,6 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> redirect() async {
     await Future.delayed(const Duration(seconds: 2));
     Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => const Introduction()));
+        MaterialPageRoute(builder: (context) => const AuthGate()));
   }
 }

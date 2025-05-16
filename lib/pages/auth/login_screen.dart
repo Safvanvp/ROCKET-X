@@ -5,6 +5,7 @@ import 'package:xclone/assets/app_images.dart';
 import 'package:xclone/components/my_button.dart';
 import 'package:xclone/components/my_loginproviders.dart';
 import 'package:xclone/components/my_textfield.dart';
+import 'package:xclone/pages/auth/Register.dart';
 import 'package:xclone/services/auth/auth_services.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -133,7 +134,12 @@ class LoginScreen extends StatelessWidget {
                     width: 4,
                   ),
                   TextButton(
-                    onPressed: () => (),
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterPage()));
+                    },
                     child: Text('Register now',
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.primary,

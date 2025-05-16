@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class AuthServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -19,9 +18,8 @@ class AuthServices {
     }
   }
 
-
   //logout
-   Future<void> signOut() async {
+  Future<void> signOut() async {
     await _auth.signOut();
   }
 }

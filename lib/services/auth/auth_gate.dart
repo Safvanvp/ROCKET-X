@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:xclone/pages/auth/login_screen.dart';
+
 import 'package:xclone/pages/home_screen.dart';
+import 'package:xclone/pages/onboarding/introduction.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
@@ -15,7 +16,7 @@ class AuthGate extends StatelessWidget {
             if (snapshot.hasData) {
               return HomeScreen();
             } else {
-              return LoginScreen();
+              return Introduction();
             }
           }),
     );

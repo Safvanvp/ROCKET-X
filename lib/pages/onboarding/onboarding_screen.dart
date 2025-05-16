@@ -37,8 +37,8 @@ class OnboardingScreen extends StatelessWidget {
               Spacer(),
               GestureDetector(
                 onTap: () {
-                  // Navigator.pushReplacement(context,
-                  //     MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
                 child: Container(
                   alignment: Alignment.center,

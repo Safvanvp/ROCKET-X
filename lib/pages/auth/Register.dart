@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:xclone/assets/app_animations.dart';
 import 'package:xclone/components/my_button.dart';
 import 'package:xclone/components/my_textfield.dart';
+import 'package:xclone/pages/auth/login_screen.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({
@@ -104,7 +105,10 @@ class RegisterPage extends StatelessWidget {
                   width: 4,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                  },
                   child: Text('login now',
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.primary,

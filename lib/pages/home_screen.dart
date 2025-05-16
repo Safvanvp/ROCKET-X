@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xclone/services/auth/auth_gate.dart';
 import 'package:xclone/services/auth/auth_services.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,8 +9,8 @@ class HomeScreen extends StatelessWidget {
 
   void _logout(BuildContext context) async {
     _authServices.signOut();
-    Navigator.pop(context);
-    
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => AuthGate()));
   }
 
   @override
