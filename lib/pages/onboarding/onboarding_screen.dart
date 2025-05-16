@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xclone/assets/app_images.dart';
+import 'package:xclone/pages/auth/Register.dart';
 import 'package:xclone/pages/auth/login_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -58,12 +59,18 @@ class OnboardingScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Text('Create a account',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary,
-                  )),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => RegisterPage()));
+                },
+                child: Text('Create a account',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
+                    )),
+              )
             ],
           ),
         ),

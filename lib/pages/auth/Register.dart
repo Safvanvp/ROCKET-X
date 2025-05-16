@@ -18,13 +18,13 @@ class RegisterPage extends StatelessWidget {
       TextEditingController();
   final _registerkey = GlobalKey<FormState>();
 
-  void register(BuildContext context)async{
+  void register(BuildContext context) async {
     final authServices = AuthServices();
 
-    try{
-      await authServices.signInWithEmailAndPassword(emailController.text, passwordController.text);
-
-    }catch(e){
+    try {
+      await authServices.signUpWithEmailAndPassword(
+          emailController.text, passwordController.text, nameController.text);
+    } catch (e) {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -86,78 +86,81 @@ class RegisterPage extends StatelessWidget {
                 height: 40,
               ),
               MyTextfield(
-                  hintText: 'Email',
-                  obscureText: false,
-                  controller: emailController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Email is required';
-                    }
-                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                        .hasMatch(value)) {
-                      return 'Enter a valid email';
-                    }
-                    return null;
-                  },
-                  ),
+                hintText: 'Email',
+                obscureText: false,
+                controller: emailController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Email is required';
+                  }
+                  if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                      .hasMatch(value)) {
+                    return 'Enter a valid email';
+                  }
+                  return null;
+                },
+              ),
               const SizedBox(
                 height: 20,
               ),
               MyTextfield(
-                  hintText: 'Name',
-                  obscureText: false,
-                  controller: nameController,
-                  validator: (value){
-                    if (value == null || value.isEmpty) {
-                      return 'Name is required';
-                    }
-                    if (value.length < 5) {
-                      return 'Name must be at least 5 characters';
-                    }
-                    return null;
-                  },
-                  ),
+                hintText: 'Name',
+                obscureText: false,
+                controller: nameController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Name is required';
+                  }
+                  if (value.length < 5) {
+                    return 'Name must be at least 5 characters';
+                  }
+                  return null;
+                },
+              ),
               const SizedBox(
                 height: 20,
               ),
               MyTextfield(
-                  hintText: 'Password',
-                  obscureText: true,
-                  controller: passwordController,
-                  validator: (value){
-                    if (value == null || value.isEmpty) {
-                      return 'Password is required';
-                    }
-                    if (value.length < 6) {
-                      return 'Password must be at least 6 characters';
-                    }
-                    return null;
-                  },
-                  ),
+                hintText: 'Password',
+                obscureText: true,
+                controller: passwordController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Password is required';
+                  }
+                  if (value.length < 6) {
+                    return 'Password must be at least 6 characters';
+                  }
+                  return null;
+                },
+              ),
               const SizedBox(
                 height: 20,
               ),
               MyTextfield(
-                  hintText: 'Confirm Password',
-                  obscureText: true,
-                  controller: confirmPasswordController,
-                  validator: (value){
-                    if (value == null || value.isEmpty) {
-                      return 'Confirm Password is required';
-                    }
-                    if (value != passwordController.text) {
-                      return 'Password does not match';
-                    }
-                    return null;
-                  
-                  },
-                  ),
+                hintText: 'Confirm Password',
+                obscureText: true,
+                controller: confirmPasswordController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Confirm Password is required';
+                  }
+                  if (value != passwordController.text) {
+                    return 'Password does not match';
+                  }
+                  return null;
+                },
+              ),
               const SizedBox(
                 height: 30,
               ),
               MyButton(
                 text: 'Signup',
-                onTap: () {},
+                onTap: () {
+                  if (_registerkey.currentState!.validate()) {
+                    register(context);
+                  }
+                },
               ),
               const SizedBox(
                 height: 20,
@@ -175,8 +178,10 @@ class RegisterPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => LoginScreen()));
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
                     },
                     child: Text('login now',
                         style: TextStyle(
