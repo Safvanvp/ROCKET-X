@@ -15,6 +15,7 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  final _registerkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -22,103 +23,148 @@ class RegisterPage extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
           child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            Lottie.asset(AppAnimations.login,
-                width: 250,
-                height: 250,
-                fit: BoxFit.fill,
-                repeat: true,
-                animate: true),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Register',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
+        child: Form(
+          key: _registerkey,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 20,
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Wellcome back the real-world.\nPlease register to continue',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontSize: 16,
+              Lottie.asset(AppAnimations.login,
+                  width: 250,
+                  height: 250,
+                  fit: BoxFit.fill,
+                  repeat: true,
+                  animate: true),
+              const SizedBox(
+                height: 20,
               ),
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            MyTextfield(
-                hintText: 'Email',
-                obscureText: false,
-                controller: emailController),
-            const SizedBox(
-              height: 20,
-            ),
-            MyTextfield(
-                hintText: 'Name',
-                obscureText: false,
-                controller: nameController),
-            const SizedBox(
-              height: 20,
-            ),
-            MyTextfield(
-                hintText: 'Password',
-                obscureText: true,
-                controller: passwordController),
-            const SizedBox(
-              height: 20,
-            ),
-            MyTextfield(
-                hintText: 'Confirm Password',
-                obscureText: true,
-                controller: confirmPasswordController),
-            const SizedBox(
-              height: 30,
-            ),
-            MyButton(
-              text: 'Signup',
-              onTap: () {},
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Alread have a account?,",
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurface,
-                      fontSize: 16,
-                    )),
-                const SizedBox(
-                  width: 4,
+              Text(
+                'Register',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
                 ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Wellcome back the real-world.\nPlease register to continue',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              MyTextfield(
+                  hintText: 'Email',
+                  obscureText: false,
+                  controller: emailController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Email is required';
+                    }
+                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                        .hasMatch(value)) {
+                      return 'Enter a valid email';
+                    }
+                    return null;
                   },
-                  child: Text('login now',
+                  ),
+              const SizedBox(
+                height: 20,
+              ),
+              MyTextfield(
+                  hintText: 'Name',
+                  obscureText: false,
+                  controller: nameController,
+                  validator: (value){
+                    if (value == null || value.isEmpty) {
+                      return 'Name is required';
+                    }
+                    if (value.length < 5) {
+                      return 'Name must be at least 5 characters';
+                    }
+                    return null;
+                  },
+                  ),
+              const SizedBox(
+                height: 20,
+              ),
+              MyTextfield(
+                  hintText: 'Password',
+                  obscureText: true,
+                  controller: passwordController,
+                  validator: (value){
+                    if (value == null || value.isEmpty) {
+                      return 'Password is required';
+                    }
+                    if (value.length < 6) {
+                      return 'Password must be at least 6 characters';
+                    }
+                    return null;
+                  },
+                  ),
+              const SizedBox(
+                height: 20,
+              ),
+              MyTextfield(
+                  hintText: 'Confirm Password',
+                  obscureText: true,
+                  controller: confirmPasswordController,
+                  validator: (value){
+                    if (value == null || value.isEmpty) {
+                      return 'Confirm Password is required';
+                    }
+                    if (value != passwordController.text) {
+                      return 'Password does not match';
+                    }
+                    return null;
+                  
+                  },
+                  ),
+              const SizedBox(
+                height: 30,
+              ),
+              MyButton(
+                text: 'Signup',
+                onTap: () {},
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Alread have a account?,",
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
+                        color: Theme.of(context).colorScheme.onSurface,
                         fontSize: 16,
-                        fontWeight: FontWeight.bold,
                       )),
-                )
-              ],
-            ),
-          ],
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => LoginScreen()));
+                    },
+                    child: Text('login now',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       )),
     );

@@ -4,19 +4,24 @@ class MyTextfield extends StatelessWidget {
   final String hintText;
   final bool obscureText;
   final TextEditingController controller;
+  // final TextInputType keyboardType;
+  final String? Function(String?)? validator;
   const MyTextfield({
     required this.hintText,
     required this.obscureText,
     required this.controller,
+    this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextField(
+      child: TextFormField(
+        validator: validator,
         controller: controller,
         obscureText: obscureText,
+        
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: TextStyle(

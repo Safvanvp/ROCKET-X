@@ -21,6 +21,7 @@ dependencies:
   lottie:
   smooth_page_indicator:
   flutter_launcher_icons:
+  google_sign_in: 
 
   
   
