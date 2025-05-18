@@ -24,6 +24,12 @@ class RegisterPage extends StatelessWidget {
     try {
       await authServices.signUpWithEmailAndPassword(
           emailController.text, passwordController.text, nameController.text);
+
+      //dispose the text controllers
+      emailController.dispose();
+      nameController.dispose();
+      passwordController.dispose();
+      confirmPasswordController.dispose();
     } catch (e) {
       showDialog(
         context: context,
@@ -75,7 +81,7 @@ class RegisterPage extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Wellcome back the real-world.\nPlease register to continue',
+                'Welcome back to the real world.\nPlease register to continue',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.onSurface,
@@ -122,7 +128,7 @@ class RegisterPage extends StatelessWidget {
               ),
               MyTextfield(
                 hintText: 'Password',
-                obscureText: true,
+                obscureText: false,
                 controller: passwordController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -168,7 +174,7 @@ class RegisterPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Alread have a account?,",
+                  Text("Already have an account?,",
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onSurface,
                         fontSize: 16,
