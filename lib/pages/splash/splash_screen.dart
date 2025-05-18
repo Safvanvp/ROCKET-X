@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xclone/assets/app_images.dart';
-import 'package:xclone/services/auth/auth_gate.dart';
+import 'package:xclone/pages/onboarding/introduction.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -38,7 +38,8 @@ class _SplashScreenState extends State<SplashScreen>
     await Future.delayed(const Duration(seconds: 3));
     Navigator.of(context).pushReplacement(PageRouteBuilder(
       transitionDuration: const Duration(milliseconds: 700),
-      pageBuilder: (context, animation, secondaryAnimation) => const AuthGate(),
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const Introduction(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeTransition(
           opacity: animation,

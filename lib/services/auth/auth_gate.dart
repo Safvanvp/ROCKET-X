@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:xclone/pages/home_screen.dart';
 import 'package:xclone/pages/onboarding/introduction.dart';
+import 'package:xclone/pages/splash/splash_screen.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
@@ -13,6 +14,9 @@ class AuthGate extends StatelessWidget {
       body: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return SplashScreen();
+            }
             if (snapshot.hasData) {
               return HomeScreen();
             } else {
