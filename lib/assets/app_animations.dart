@@ -6,6 +6,8 @@ class AppAnimations {
   static String second = '${basePath}2$jsonFormat';
   static String thired = '${basePath}3$jsonFormat';
 
+  static String splash = '${basePath}spalash$jsonFormat';
+
   static String login = '${basePath}login$jsonFormat';
   static String ai = '${basePath}ai$jsonFormat';
 }
