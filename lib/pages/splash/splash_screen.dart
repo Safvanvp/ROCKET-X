@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xclone/assets/app_images.dart';
-
 import 'package:xclone/services/auth/auth_gate.dart';
-
-
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,11 +9,54 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
   @override
   void initState() {
-    redirect();
     super.initState();
+
+    // Initialize animation controller
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1500),
+      vsync: this,
+    );
+
+    // Scale animation
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
+
+    // Start animation
+    _controller.forward();
+
+    // Start navigation after delay
+    redirect();
+  }
+
+  Future<void> redirect() async {
+    await Future.delayed(const Duration(seconds: 3));
+    Navigator.of(context).pushReplacement(PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 700),
+      pageBuilder: (context, animation, secondaryAnimation) => const AuthGate(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: SlideTransition(
+            position:
+                Tween<Offset>(begin: const Offset(0.0, 0.1), end: Offset.zero)
+                    .animate(animation),
+            child: child,
+          ),
+        );
+      },
+    ));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -24,14 +64,14 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Image.asset(AppImages.logo, width: 200, height: 200),
+        child: ScaleTransition(
+          scale: _animation,
+          child: FadeTransition(
+            opacity: _animation,
+            child: Image.asset(AppImages.logo, width: 200, height: 200),
+          ),
+        ),
       ),
     );
-  }
-
-  Future<void> redirect() async {
-    await Future.delayed(const Duration(seconds: 2));
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => const AuthGate()));
   }
 }
