@@ -19,7 +19,7 @@ class _AuthGateState extends State<AuthGate> {
   void initState() {
     super.initState();
     // Delay splash screen for 2 seconds
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 10), () {
       setState(() {
         _showSplash = false;
       });
@@ -36,7 +36,7 @@ class _AuthGateState extends State<AuthGate> {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const SplashScreen(); // Optional fallback for auth delay
+          return const SplashScreen();
         }
         if (snapshot.hasData) {
           return HomeScreen();
